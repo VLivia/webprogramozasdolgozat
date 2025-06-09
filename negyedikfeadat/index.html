@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Full Stack Fejlesztők</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Full Stack Jelöltek</h1>
+  <div id="result"></div>
+
+  <script>
+    const front = 'Zsiros B. Odon;Koaxk Abel;Heu Reka;Riz Otto';
+    const back = 'Riz Otto;Rabsz Olga;Trab Antal;Koaxk Abel;Winch Eszter';
+
+    const result1 = fullStack(front, back);
+    const result2 = fullStack('Citad Ella;Techno Kolos', 'Git Aron;Teask Anna');
+
+    const resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
+      <p><strong>Teszteset 1:</strong> ${result1.join(', ')}</p>
+      <p><strong>Teszteset 2:</strong> ${result2.join(', ') || 'Nincs olyan fejlesztő aki  front-end és back-end fejlesztő is.'}</p>
+    `;
+  </script>
+</body>
+</html>
