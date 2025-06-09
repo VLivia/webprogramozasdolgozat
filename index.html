@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Div-ek kezelése</title>
+</head>
+<body>
+
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+
+  <script>
+    
+    const divs = document.querySelectorAll('body > div');
+
+    if (divs.length === 5) {
+      divs[0].textContent = "Első";
+      divs[2].textContent = "Harmadik";
+      divs[4].textContent = "Utolsó";
+      divs[1].textContent = "2";  
+      divs[3].textContent = "4";  
+    } else {
+      console.error("Nem 5 div van a bodyban!");
+    }
+  </script>
+
+</body>
+</html>
