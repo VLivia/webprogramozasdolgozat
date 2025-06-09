@@ -2,10 +2,27 @@
 <html lang="hu">
 <head>
   <meta charset="UTF-8">
-  <title>Div-ek kezelése</title>
+  <title>Div-ek kezelése és háttércsere</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 30px;
+    }
+    div {
+      margin: 10px auto;
+      width: 300px;
+      height: 100px;
+      line-height: 100px;
+      border: 1px solid #769de6;
+      font-size: 20px;
+      background-color: #da65a9;
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Öt alap div -->
   <div></div>
   <div></div>
   <div></div>
@@ -17,14 +34,47 @@
     const divs = document.querySelectorAll('body > div');
 
     if (divs.length === 5) {
-      divs[0].textContent = "Első";
-      divs[2].textContent = "Harmadik";
-      divs[4].textContent = "Utolsó";
-      divs[1].textContent = "2";  
-      divs[3].textContent = "4";  
+      for (let i = 0; i < divs.length; i++) {
+        if (i === 0) {
+          divs[i].textContent = "Első";
+        } else if (i === 2) {
+          divs[i].textContent = "Harmadik";
+        } else if (i === 4) {
+          divs[i].textContent = "Utolsó";
+        } else {
+          divs[i].textContent = (i + 1).toString(); 
+        }
+      }
     } else {
       console.error("Nem 5 div van a bodyban!");
     }
+
+    
+    function createImageDiv() {
+      const div = document.createElement('div');
+
+      const originalBg = 'https://www.kreactivity.hu/img/23190/G00176/500x500,r/Kis-tigris-festes-es-gyemantszemes-kreativ-hibrid-kep.webp?time=1715340732';
+      const clickedBg = 'https://www.kreactivity.hu/img/23190/6548_500/500x500,r/Szafari-naplementeben-szamfesto-500-db-os-puzzle.webp?time=1653746917';
+
+      Object.assign(div.style, {
+        backgroundImage: `url(${originalBg})`,
+        backgroundSize: 'cover',
+        cursor: 'pointer'
+      });
+
+      div.addEventListener('click', () => {
+        div.style.backgroundImage = `url(${clickedBg})`;
+        setTimeout(() => {
+          div.style.backgroundImage = `url(${originalBg})`;
+        }, 2000);
+      });
+
+      return div;
+    }
+
+    
+    const imageDiv = createImageDiv();
+    document.body.appendChild(imageDiv);
   </script>
 
 </body>
